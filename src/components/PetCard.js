@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
 
-const PetCard = ({ catImg }) => {
-  console.log(catImg);
+const PetCard = ({ petImg }) => {
+  console.log(petImg);
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
@@ -19,7 +19,7 @@ const PetCard = ({ catImg }) => {
           alt="like button"
           onClick={handleClick}
         />
-        <img src={catImg} alt="cat" />
+        <img src={petImg} alt="cat" />
       </div>
     </div>
   );

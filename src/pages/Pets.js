@@ -1,9 +1,10 @@
 import PetCard from "../components/PetCard";
 import { catsApi, dogsApi } from "../api/api";
 import React, { useState, useEffect, useRef } from "react";
+import loadingGif from "../assets/loading.gif";
 
 const Pets = () => {
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState(Array(10).fill(null));
   const [species, setSpecies] = useState(null);
   const dogsRef = useRef();
   const catsRef = useRef();
@@ -77,11 +78,13 @@ const Pets = () => {
       </form>
 
       <div className="grid-4">
-        {pets.map((cat, index) => {
-          return cat ? (
-            <PetCard key={index} catImg={cat.url} />
+        {pets.map((pet, index) => {
+          return pet ? (
+            <PetCard key={index} petImg={pet.url} />
           ) : (
-            <p>Loading...</p>
+            <div>
+              <img src={loadingGif} alt="loading" />
+            </div>
           );
         })}
       </div>
