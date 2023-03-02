@@ -147,6 +147,7 @@ footer {
   border-radius: 0.5rem;
   margin: 1rem 0;
   min-width: 6rem;
+  text-align: center;
 }
 
 /* List */
@@ -228,7 +229,13 @@ footer {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1rem;
 }
-
+.like-btn {
+  cursor: pointer;
+  width: 6rem;
+}
+.like-btn:hover {
+  opacity: 0.8;
+}
 .btn {
   display: inline-block;
   background: var(--light-color);
