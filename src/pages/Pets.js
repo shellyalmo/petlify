@@ -6,14 +6,20 @@ const Pets = () => {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     catsApi
-      .get("/images/search?limit=10")
+      .get("/images/search?limit=10", {
+        signal: controller.signal,
+      })
       .then((response) => {
-        setCats((oldArray) => [...oldArray, ...response.data]);
+        setCats(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    return () => controller.abort();
   }, []);
 
   return (
