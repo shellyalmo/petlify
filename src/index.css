@@ -63,12 +63,15 @@ img {
 span {
   font-family: "Roboto", "Arimo", sans-serif;
 }
+.about {
+  text-align: center;
+}
 
 footer {
   bottom: 0;
-  position: fixed;
+  position: relative;
   width: 100%;
-  right: 50%;
+  text-align: center;
 }
 /* Utilities */
 .container {
