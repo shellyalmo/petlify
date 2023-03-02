@@ -64,6 +64,12 @@ span {
   font-family: "Roboto", "Arimo", sans-serif;
 }
 
+footer {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  right: 50%;
+}
 /* Utilities */
 .container {
   width: 110rem;
@@ -477,6 +483,15 @@ video {
 
 /* Mobile Styles */
 
+/*laptop*/
+@media (max-width: 1280px) {
+  video {
+    width: 100vw;
+  }
+  .overlay {
+    top: 40%;
+  }
+}
 /* Small screens */
 @media (max-width: 1200px) {
   .grid-3,
@@ -513,7 +528,11 @@ video {
   .hide-sm {
     display: none;
   }
-
+  .overlay {
+    font-size: 1rem;
+    top: 20%;
+    width: 90vw;
+  }
   .grid-2,
   .grid-3,
   .grid-4 {
@@ -524,14 +543,10 @@ video {
   .navbar .container {
     width: 100%;
   }
-}
-
-/*laptop*/
-@media (max-width: 1280px) {
+  .container {
+    padding: 0;
+  }
   video {
     width: 100vw;
-  }
-  .overlay {
-    top: 40%;
   }
 }

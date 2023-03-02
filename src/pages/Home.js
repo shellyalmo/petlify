@@ -13,6 +13,7 @@ const Home = () => (
         <br />
         אז למה לקנות כשאפשר לאמץ?
       </p>
+      <button className=" btn btn-light">הירשמו אלינו!</button>
     </div>
   </>
 );
