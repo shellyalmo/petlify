@@ -7,18 +7,20 @@ const Pets = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-
-    catsApi
-      .get("/images/search?limit=10", {
-        signal: controller.signal,
-      })
-      .then((response) => {
-        setCats(response.data);
-      })
-      .catch((error) => {
+    const fetchPets = async () => {
+      try {
+        await catsApi
+          .get("/images/search?limit=10", {
+            signal: controller.signal,
+          })
+          .then((response) => {
+            setCats(response.data);
+          });
+      } catch (error) {
         console.log(error);
-      });
-
+      }
+    };
+    fetchPets();
     return () => controller.abort();
   }, []);
 
