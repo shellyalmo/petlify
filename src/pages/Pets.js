@@ -5,6 +5,8 @@ import React, { useState, useEffect, useRef } from "react";
 const Pets = () => {
   const [pets, setPets] = useState([]);
   const [species, setSpecies] = useState(null);
+  const dogsRef = useRef();
+  const catsRef = useRef();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -32,6 +34,16 @@ const Pets = () => {
     setSpecies(formData.get("species"));
   };
 
+  useEffect(() => {
+    if (species === "dogs") {
+      dogsRef.current.checked = true;
+      catsRef.current.checked = false;
+    } else if (species === "cats") {
+      catsRef.current.checked = true;
+      dogsRef.current.checked = false;
+    }
+  }, [species]);
+
   return (
     <>
       <h2>החיות שלנו</h2>
@@ -45,7 +57,7 @@ const Pets = () => {
               id="dogs"
               name="species"
               value="dogs"
-              checked={species === "dogs" ? true : false}
+              ref={dogsRef}
             />
             <label htmlFor="dogs">כלבים</label>
           </div>
@@ -56,7 +68,7 @@ const Pets = () => {
               id="cats"
               name="species"
               value="cats"
-              checked={species === "cats" ? true : false}
+              ref={catsRef}
             />
             <label htmlFor="cats">חתולים</label>
           </div>
