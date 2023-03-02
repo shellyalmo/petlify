@@ -18,6 +18,7 @@ const Pets = () => {
           });
       } catch (error) {
         console.log(error);
+        setCats([{ url: `https://http.cat/${error.response.status}` }]);
       }
     };
     fetchPets();
