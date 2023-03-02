@@ -3,22 +3,22 @@ import { catsApi, dogsApi } from "../api/api";
 import React, { useState, useEffect } from "react";
 
 const Pets = () => {
-  const [cats, setCats] = useState([]);
+  const [pets, setPets] = useState([]);
 
   useEffect(() => {
     const controller = new AbortController();
     const fetchPets = async () => {
       try {
-        await catsApi
+        await dogsApi
           .get("/images/search?limit=10", {
             signal: controller.signal,
           })
           .then((response) => {
-            setCats(response.data);
+            setPets(response.data);
           });
       } catch (error) {
         console.log(error);
-        setCats([{ url: `https://http.cat/${error.response.status}` }]);
+        setPets([{ url: `https://http.cat/${error.response.status}` }]);
       }
     };
     fetchPets();
@@ -29,7 +29,7 @@ const Pets = () => {
     <>
       <h2>החיות שלנו</h2>
       <div className="grid-4">
-        {cats.map((cat, index) => {
+        {pets.map((cat, index) => {
           return cat ? (
             <PetCard key={index} catImg={cat.url} />
           ) : (
