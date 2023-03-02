@@ -7,7 +7,7 @@ const Pets = () => {
 
   useEffect(() => {
     catsApi
-      .get("/images/search?breed_ids=beng&limit=10")
+      .get("/images/search?limit=10")
       .then((response) => {
         setCats((oldArray) => [...oldArray, ...response.data]);
       })
