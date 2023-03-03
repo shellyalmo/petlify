@@ -62,7 +62,12 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
             <option value="" selected={breed === null}>
               --לחצו לבחירה--
             </option>
-            {(species === "cats" ? catBreeds : dogBreeds).map((breed) => {
+            {(species === "cats"
+              ? catBreeds
+              : species === "dogs"
+              ? dogBreeds
+              : []
+            ).map((breed) => {
               return <option value={breed.value}>{breed.display}</option>;
             })}
           </select>
