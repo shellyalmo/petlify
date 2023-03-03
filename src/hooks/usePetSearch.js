@@ -26,7 +26,7 @@ function reducer(state, { type, payload }) {
   }
 }
 
-function usePetSearch(species) {
+function usePetSearch(species, breed) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function usePetSearch(species) {
         dispatch({ type: ACTIONS.ERROR, payload: e.error });
       });
     return () => controller.abort();
-  }, [species]);
+  }, [species, breed]);
   return state;
 }
 

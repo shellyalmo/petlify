@@ -1,19 +1,24 @@
 import PetCard from "../components/PetCard";
-// import { catsApi, dogsApi } from "../api/api";
-import React, { useState /*, useEffect*/ } from "react";
+import React, { useState } from "react";
 import loadingGif from "../assets/loading.gif";
-import SearchBySpecies from "../components/SearchBySpecies";
+import SearchPets from "../components/SearchPets";
 import usePetSearch from "../hooks/usePetSearch";
 
 const Pets = () => {
   const [species, setSpecies] = useState(null);
+  const [breed, setBreed] = useState(null);
 
   const { pets, loading, error } = usePetSearch(species);
+
   return (
     <>
       <h2>החיות שלנו</h2>
-      <SearchBySpecies species={species} setSpecies={setSpecies} />
-
+      <SearchPets
+        species={species}
+        setSpecies={setSpecies}
+        breed={breed}
+        setBreed={setBreed}
+      />
       <div className="grid-4">
         {loading && (
           <div>
