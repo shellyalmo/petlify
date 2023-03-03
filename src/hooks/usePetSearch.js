@@ -30,15 +30,19 @@ function usePetSearch(species) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    const controller = new AbortController();
     dispatch({ type: ACTIONS.API_REQUESTS });
     (species === "cats" ? catsApi : dogsApi)
-      .get("/images/search?limit=10")
+      .get("/images/search?limit=10", {
+        signal: controller.signal,
+      })
       .then((res) => {
         dispatch({ type: ACTIONS.FETCH_DATA, payload: res.data });
       })
       .catch((e) => {
         dispatch({ type: ACTIONS.ERROR, payload: e.error });
       });
+    return () => controller.abort();
   }, [species]);
   return state;
 }
