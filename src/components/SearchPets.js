@@ -19,6 +19,11 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
     { value: 149, display: "לברדור רטריבר" },
   ];
 
+  const chooseSpeciesHandler = (e) => {
+    setSpecies(e.target.value);
+    setBreed(null);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -31,9 +36,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
               name="species"
               value="dogs"
               checked={species === "dogs"}
-              onChange={(e) => {
-                setSpecies(e.target.value);
-              }}
+              onChange={chooseSpeciesHandler}
             />
             <label htmlFor="dogs">כלבים</label>
           </div>
@@ -44,9 +47,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
               name="species"
               value="cats"
               checked={species === "cats"}
-              onChange={(e) => {
-                setSpecies(e.target.value);
-              }}
+              onChange={chooseSpeciesHandler}
             />
             <label htmlFor="cats">חתולים</label>
           </div>
@@ -58,7 +59,9 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
               setBreed(e.target.value);
             }}
           >
-            <option value="">--לחצו לבחירה--</option>
+            <option value="" selected={breed === null}>
+              --לחצו לבחירה--
+            </option>
             {(species === "cats" ? catBreeds : dogBreeds).map((breed) => {
               return <option value={breed.value}>{breed.display}</option>;
             })}
