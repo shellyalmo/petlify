@@ -3,7 +3,6 @@ import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
 
 const PetCard = ({ petImg }) => {
-  console.log(petImg);
   const [active, setActive] = useState(false);
 
   const handleClick = () => {
