@@ -1,13 +1,12 @@
 import PetCard from "../components/PetCard";
 import { catsApi, dogsApi } from "../api/api";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import loadingGif from "../assets/loading.gif";
+import SearchBySpecies from "../components/SearchBySpecies";
 
 const Pets = () => {
   const [pets, setPets] = useState(Array(10).fill(null));
   const [species, setSpecies] = useState(null);
-  const dogsRef = useRef();
-  const catsRef = useRef();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -29,53 +28,10 @@ const Pets = () => {
     return () => controller.abort();
   }, [species]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    setSpecies(formData.get("species"));
-  };
-
-  useEffect(() => {
-    if (species === "dogs") {
-      dogsRef.current.checked = true;
-      catsRef.current.checked = false;
-    } else if (species === "cats") {
-      catsRef.current.checked = true;
-      dogsRef.current.checked = false;
-    }
-  }, [species]);
-
   return (
     <>
       <h2>החיות שלנו</h2>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>בחרו סוג:</legend>
-
-          <div>
-            <input
-              type="radio"
-              id="dogs"
-              name="species"
-              value="dogs"
-              ref={dogsRef}
-            />
-            <label htmlFor="dogs">כלבים</label>
-          </div>
-
-          <div>
-            <input
-              type="radio"
-              id="cats"
-              name="species"
-              value="cats"
-              ref={catsRef}
-            />
-            <label htmlFor="cats">חתולים</label>
-          </div>
-          <button type="submit">חיפוש</button>
-        </fieldset>
-      </form>
+      <SearchBySpecies species={species} setSpecies={setSpecies} />
 
       <div className="grid-4">
         {pets.map((pet, index) => {
