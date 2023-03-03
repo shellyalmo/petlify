@@ -37,6 +37,14 @@ function usePetSearch(species, breed) {
         params: {
           breed_ids: breed,
           limit: 10,
+          page: 0,
+          order: "Asc",
+          mime_types: "jpg,png",
+          size: "small",
+          sub_id: "demo-87a227",
+        },
+        headers:{
+           "x-api-key": "DEMO-API-KEY"
         },
         signal: controller.signal,
       })
