@@ -8,7 +8,7 @@ const Pets = () => {
   const [species, setSpecies] = useState(null);
   const [breed, setBreed] = useState(null);
 
-  const { pets, loading, error } = usePetSearch(species);
+  const { pets, loading, error } = usePetSearch(species, breed);
 
   return (
     <>

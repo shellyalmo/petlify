@@ -33,7 +33,7 @@ function usePetSearch(species, breed) {
     const controller = new AbortController();
     dispatch({ type: ACTIONS.API_REQUESTS });
     (species === "cats" ? catsApi : dogsApi)
-      .get("/images/search?limit=10", {
+      .get(`/images/search?breed_ids=${breed}&limit=10`, {
         signal: controller.signal,
       })
       .then((res) => {
