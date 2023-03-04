@@ -6,6 +6,7 @@ import {
   setDoc,
   doc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore/lite";
 
 import PetCard from "../components/PetCard";
@@ -35,6 +36,13 @@ export async function createNewFavorite(petId, petImage, userId, visited) {
     pet_id: petId,
     pet_image: petImage,
     user_id: userId,
+    visited: visited,
+  });
+}
+
+export async function updateFavorite(petId, userId, visited) {
+  const favoriteRef = doc(db, "favorites", petId + userId);
+  await updateDoc(favoriteRef, {
     visited: visited,
   });
 }

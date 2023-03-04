@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
-import { createNewFavorite, deleteFavorite } from "../pages/Favorites";
+import {
+  createNewFavorite,
+  deleteFavorite,
+  updateFavorite,
+} from "../pages/Favorites";
 
 const PetCard = ({ petImg, petId, currentPage }) => {
   const [favorited, setFavorited] = useState(currentPage === "favorites");
@@ -25,6 +29,17 @@ const PetCard = ({ petImg, petId, currentPage }) => {
           onClick={handleClick}
         />
         <img src={petImg} alt="cat" />
+        {currentPage === "favorites" && (
+          <div>
+            <input
+              type="checkbox"
+              id="visited"
+              name="visited"
+              onChange={(e) => updateFavorite(petId, "2", e.target.checked)}
+            />
+            <label htmlFor="visited">Visited</label>
+          </div>
+        )}
       </div>
     </div>
   );
