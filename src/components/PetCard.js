@@ -3,10 +3,10 @@ import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
 
 const PetCard = ({ petImg }) => {
-  const [active, setActive] = useState(false);
+  const [favorited, setFavorited] = useState(false);
 
   const handleClick = () => {
-    setActive(!active);
+    setFavorited(!favorited);
   };
 
   return (
@@ -14,7 +14,7 @@ const PetCard = ({ petImg }) => {
       <div className="card">
         <img
           className="like-btn"
-          src={active ? heart : emptyHeart}
+          src={favorited ? heart : emptyHeart}
           alt="like button"
           onClick={handleClick}
         />
