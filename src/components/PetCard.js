@@ -7,7 +7,7 @@ import {
   updateFavorite,
 } from "../pages/Favorites";
 
-const PetCard = ({ petImg, petId, currentPage }) => {
+const PetCard = ({ petImg, petId, currentPage, visited }) => {
   const [favorited, setFavorited] = useState(currentPage === "favorites");
 
   const handleClick = () => {
@@ -35,6 +35,7 @@ const PetCard = ({ petImg, petId, currentPage }) => {
               type="checkbox"
               id="visited"
               name="visited"
+              defaultChecked={visited}
               onChange={(e) => updateFavorite(petId, "2", e.target.checked)}
             />
             <label htmlFor="visited">Visited</label>
