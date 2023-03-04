@@ -29,7 +29,8 @@ async function readFavorites(db) {
 }
 
 export async function CreateNewFavorite(petId, petImage, userId, visited) {
-  await setDoc(doc(db, "favorites", window.crypto.randomUUID()), {
+  // eslint-disable-next-line no-restricted-globals
+  await setDoc(doc(db, "favorites", self.crypto.randomUUID()), {
     pet_id: petId,
     pet_image: petImage,
     user_id: userId,
