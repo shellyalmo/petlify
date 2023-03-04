@@ -67,6 +67,7 @@ const Favorites = () => {
             petImg={favorite.pet_image}
             currentPage={"favorites"}
             petId={favorite.pet_id}
+            visited={favorite.visited}
           />
         );
       })}
