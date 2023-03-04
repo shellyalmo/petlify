@@ -1,7 +1,6 @@
 import About from "./About";
 import Home from "./Home";
 import Pets from "./Pets";
-// import NotFound from './NotFound';
-// import User from './User';
+import Favorites from "./Favorites";
 
-export { About, Home, Pets };
+export { About, Home, Pets, Favorites };
