@@ -1,25 +1,45 @@
 import React, { useState } from "react";
 import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
+import {
+  createNewFavorite,
+  deleteFavorite,
+  updateFavorite,
+} from "../pages/Favorites";
 
-const PetCard = ({ petImg }) => {
-  console.log(petImg);
-  const [active, setActive] = useState(false);
+const PetCard = ({ petImg, petId, currentPage }) => {
+  const [favorited, setFavorited] = useState(currentPage === "favorites");
 
   const handleClick = () => {
-    setActive(!active);
+    if (favorited === false) {
+      createNewFavorite(petId, petImg, "2", false);
+    } else {
+      deleteFavorite(petId, "2");
+    }
+    setFavorited(!favorited);
   };
 
-  return (
+  return currentPage === "favorites" && !favorited ? null : (
     <div>
       <div className="card">
         <img
           className="like-btn"
-          src={active ? heart : emptyHeart}
+          src={favorited ? heart : emptyHeart}
           alt="like button"
           onClick={handleClick}
         />
         <img src={petImg} alt="cat" />
+        {currentPage === "favorites" && (
+          <div>
+            <input
+              type="checkbox"
+              id="visited"
+              name="visited"
+              onChange={(e) => updateFavorite(petId, "2", e.target.checked)}
+            />
+            <label htmlFor="visited">Visited</label>
+          </div>
+        )}
       </div>
     </div>
   );

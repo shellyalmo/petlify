@@ -51,24 +51,27 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
             />
             <label htmlFor="cats">חתולים</label>
           </div>
-          <label for="breed-select">בחרו גזע:</label>
+          <label htmlFor="breed-select">בחרו גזע:</label>
           <select
             name="breeds"
             id="breed-select"
             onChange={(e) => {
               setBreed(e.target.value);
             }}
+            defaultValue=""
           >
-            <option value="" selected={breed === null}>
-              --לחצו לבחירה--
-            </option>
+            <option value="">--לחצו לבחירה--</option>
             {(species === "cats"
               ? catBreeds
               : species === "dogs"
               ? dogBreeds
               : []
             ).map((breed) => {
-              return <option value={breed.value}>{breed.display}</option>;
+              return (
+                <option key={breed.value} value={breed.value}>
+                  {breed.display}
+                </option>
+              );
             })}
           </select>
         </fieldset>
