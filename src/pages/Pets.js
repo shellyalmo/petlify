@@ -27,7 +27,7 @@ const Pets = () => {
         )}
         {error && <h3>Error: something went wrong </h3>}
         {pets.map((pet, index) => {
-          return pet && <PetCard key={index} petImg={pet.url} />;
+          return pet && <PetCard key={index} petImg={pet.url} petId={pet.id} />;
         })}
       </div>
     </>

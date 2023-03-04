@@ -21,14 +21,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-async function getFavorites(db) {
+async function readFavorites(db) {
   const favoritesCollection = collection(db, "favorites");
   const favoritesSnapshot = await getDocs(favoritesCollection);
   const favoritesList = favoritesSnapshot.docs.map((doc) => doc.data());
   return favoritesList;
 }
 
-async function writeFavoritesData(petId, petImage, userId, visited) {
+export async function CreateNewFavorite(petId, petImage, userId, visited) {
   await setDoc(doc(db, "favorites", window.crypto.randomUUID()), {
     pet_id: petId,
     pet_image: petImage,
@@ -41,9 +41,9 @@ const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    getFavorites(db).then(setFavorites);
+    readFavorites(db).then(setFavorites);
   }, []);
-  // writeFavoritesData("1", "https://cdn2.the", "2", true);
+
   return (
     <div>
       {favorites.map((favorite) => {
