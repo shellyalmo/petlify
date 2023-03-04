@@ -5,6 +5,7 @@ import {
   getDocs,
   setDoc,
   doc,
+  deleteDoc,
 } from "firebase/firestore/lite";
 
 import PetCard from "../components/PetCard";
@@ -28,14 +29,18 @@ async function readFavorites(db) {
   return favoritesList;
 }
 
-export async function CreateNewFavorite(petId, petImage, userId, visited) {
+export async function createNewFavorite(petId, petImage, userId, visited) {
   // eslint-disable-next-line no-restricted-globals
-  await setDoc(doc(db, "favorites", self.crypto.randomUUID()), {
+  await setDoc(doc(db, "favorites", petId + userId), {
     pet_id: petId,
     pet_image: petImage,
     user_id: userId,
     visited: visited,
   });
+}
+
+export async function deleteFavorite(petId, userId) {
+  await deleteDoc(doc(db, "favorites", petId + userId));
 }
 
 const Favorites = () => {
@@ -48,7 +53,14 @@ const Favorites = () => {
   return (
     <div>
       {favorites.map((favorite) => {
-        return <PetCard key={favorite.pet_id} petImg={favorite.pet_image} />;
+        return (
+          <PetCard
+            key={favorite.pet_id}
+            petImg={favorite.pet_image}
+            currentPage={"favorites"}
+            petId={favorite.pet_id}
+          />
+        );
       })}
     </div>
   );

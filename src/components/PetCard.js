@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
-import { CreateNewFavorite } from "../pages/Favorites";
+import { createNewFavorite, deleteFavorite } from "../pages/Favorites";
 
-const PetCard = ({ petImg, petId }) => {
-  const [favorited, setFavorited] = useState(false);
+const PetCard = ({ petImg, petId, currentPage }) => {
+  const [favorited, setFavorited] = useState(currentPage === "favorites");
 
   const handleClick = () => {
     if (favorited === false) {
-      CreateNewFavorite(petId, petImg, "2", false);
+      createNewFavorite(petId, petImg, "2", false);
+    } else {
+      deleteFavorite(petId, "2");
     }
     setFavorited(!favorited);
   };
