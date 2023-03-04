@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  setDoc,
+  doc,
+} from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmJitc3_Ir7MTmqZwkOKcjLtmWARU0Tlk",
@@ -19,8 +25,18 @@ async function getFavorites(db) {
   return favoritesList;
 }
 
+async function writeFavoritesData(petId, petImage, userId, visited) {
+  await setDoc(doc(db, "favorites", window.crypto.randomUUID()), {
+    pet_id: petId,
+    pet_image: petImage,
+    user_id: userId,
+    visited: visited,
+  });
+}
+
 const Favorites = () => {
   console.log(getFavorites(db));
+  // writeFavoritesData("1", "https://cdn2.the", "2", true);
   return <div></div>;
 };
 
