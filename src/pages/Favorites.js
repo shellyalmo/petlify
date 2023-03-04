@@ -7,6 +7,9 @@ import {
   doc,
 } from "firebase/firestore/lite";
 
+import PetCard from "../components/PetCard";
+import { useEffect, useState } from "react";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAmJitc3_Ir7MTmqZwkOKcjLtmWARU0Tlk",
   authDomain: "pets-shelly.firebaseapp.com",
@@ -35,9 +38,19 @@ async function writeFavoritesData(petId, petImage, userId, visited) {
 }
 
 const Favorites = () => {
-  console.log(getFavorites(db));
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    getFavorites(db).then(setFavorites);
+  }, []);
   // writeFavoritesData("1", "https://cdn2.the", "2", true);
-  return <div></div>;
+  return (
+    <div>
+      {favorites.map((favorite) => {
+        return <PetCard key={favorite.pet_id} petImg={favorite.pet_image} />;
+      })}
+    </div>
+  );
 };
 
 export default Favorites;
