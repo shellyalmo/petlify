@@ -15,7 +15,7 @@ const PetCard = ({ petImg, petId, currentPage }) => {
     setFavorited(!favorited);
   };
 
-  return (
+  return currentPage === "favorites" && !favorited ? null : (
     <div>
       <div className="card">
         <img
