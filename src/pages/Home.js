@@ -1,5 +1,8 @@
 import catDogVideo from "../assets/catdog-video.mp4";
-import { signInWithGoogle } from "../firebase_setup/googleAuth";
+import {
+  signInWithGoogle,
+  signOutWithGoogle,
+} from "../firebase_setup/googleAuth";
 
 const Home = () => (
   <>
@@ -15,6 +18,9 @@ const Home = () => (
       </p>
       <button className=" btn btn-light" onClick={signInWithGoogle}>
         הירשמו אלינו!
+      </button>
+      <button className=" btn btn-light" onClick={signOutWithGoogle}>
+        התנתקו
       </button>
     </div>
   </>

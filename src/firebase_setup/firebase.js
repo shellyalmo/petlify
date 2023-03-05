@@ -8,6 +8,7 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAmJitc3_Ir7MTmqZwkOKcjLtmWARU0Tlk",
@@ -20,6 +21,8 @@ const firebaseConfig = {
 //initialize firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
+export const auth = getAuth();
 
 //crud actions on firestore database
 export async function readFavorites(db) {
