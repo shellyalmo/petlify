@@ -5,7 +5,7 @@ import {
   createNewFavorite,
   deleteFavorite,
   updateFavorite,
-} from "../pages/Favorites";
+} from "../firebase_setup/firebase.js";
 
 const PetCard = ({ petImg, petId, currentPage, visited }) => {
   const [favorited, setFavorited] = useState(currentPage === "favorites");
@@ -38,7 +38,7 @@ const PetCard = ({ petImg, petId, currentPage, visited }) => {
               defaultChecked={visited}
               onChange={(e) => updateFavorite(petId, "2", e.target.checked)}
             />
-            <label htmlFor="visited">Visited</label>
+            <label htmlFor="visited">ביקרתי</label>
           </div>
         )}
       </div>
