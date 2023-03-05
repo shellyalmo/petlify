@@ -1,9 +1,23 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/black-logo.png";
+import {
+  signInWithGoogle,
+  signOutWithGoogle,
+} from "../../firebase_setup/googleAuth";
+
+import { user } from "../../firebase_setup/googleAuth";
+import { FcGoogle } from "react-icons/fc";
+
 const Navbar = () => {
   return (
     <nav className="navbar bg-dark">
       <div className="container">
+        {user ? (
+          <button onClick={signOutWithGoogle}>התנתקות</button>
+        ) : (
+          <FcGoogle onClick={signInWithGoogle} />
+        )}
+
         <h1 className="logo">
           <Link to="/">
             פטליפיי
@@ -36,14 +50,18 @@ const Navbar = () => {
               החיות שלנו
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) => (isActive ? "link active" : "link")}
-            >
-              המועדפים שלך
-            </NavLink>
-          </li>
+          {user && (
+            <li>
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  isActive ? "link active" : "link"
+                }
+              >
+                המועדפים שלך
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

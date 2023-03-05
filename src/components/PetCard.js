@@ -6,17 +6,20 @@ import {
   deleteFavorite,
   updateFavorite,
 } from "../firebase_setup/firebase.js";
+import { user } from "../firebase_setup/googleAuth";
 
 const PetCard = ({ petImg, petId, currentPage, visited }) => {
   const [favorited, setFavorited] = useState(currentPage === "favorites");
 
   const handleClick = () => {
-    if (favorited === false) {
-      createNewFavorite(petId, petImg, "2", false);
-    } else {
-      deleteFavorite(petId, "2");
+    if (user) {
+      if (favorited === false) {
+        createNewFavorite(petId, petImg, user.uid, false);
+      } else {
+        deleteFavorite(petId, user.uid);
+      }
+      setFavorited(!favorited);
     }
-    setFavorited(!favorited);
   };
 
   return currentPage === "favorites" && !favorited ? null : (
@@ -36,7 +39,9 @@ const PetCard = ({ petImg, petId, currentPage, visited }) => {
               id="visited"
               name="visited"
               defaultChecked={visited}
-              onChange={(e) => updateFavorite(petId, "2", e.target.checked)}
+              onChange={(e) =>
+                updateFavorite(petId, user.uid, e.target.checked)
+              }
             />
             <label htmlFor="visited">ביקרתי</label>
           </div>

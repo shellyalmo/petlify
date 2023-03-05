@@ -1,8 +1,15 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { auth } from "./firebase";
 
 const provider = new GoogleAuthProvider();
 auth.languageCode = "he";
+
+export let user;
 
 // export const signInWithGoogle = () => auth.signInWithPopup(provider);
 export const signInWithGoogle = () => {
@@ -14,7 +21,7 @@ export const signInWithGoogle = () => {
       const token = credential.accessToken;
       console.log(token);
       // The signed-in user info.
-      const user = result.user;
+      user = result.user;
       console.log(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...

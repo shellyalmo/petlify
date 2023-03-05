@@ -10,7 +10,7 @@ const Favorites = () => {
   }, []);
 
   return (
-    <div>
+    <div className="grid-4">
       {favorites.map((favorite) => {
         return (
           <PetCard
