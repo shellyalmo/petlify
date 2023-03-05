@@ -1,7 +1,7 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { auth } from "./firebase";
 
 const provider = new GoogleAuthProvider();
-const auth = getAuth();
 auth.languageCode = "he";
 
 // export const signInWithGoogle = () => auth.signInWithPopup(provider);
@@ -10,9 +10,12 @@ export const signInWithGoogle = () => {
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
+      console.log(credential);
       const token = credential.accessToken;
+      console.log(token);
       // The signed-in user info.
       const user = result.user;
+      console.log(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     })
@@ -25,5 +28,15 @@ export const signInWithGoogle = () => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
+    });
+};
+
+export const signOutWithGoogle = () => {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
     });
 };
