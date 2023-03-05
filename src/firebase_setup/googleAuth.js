@@ -1,9 +1,4 @@
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "./firebase";
 
 const provider = new GoogleAuthProvider();
@@ -35,6 +30,7 @@ export const signInWithGoogle = () => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
+      console.log({ errorCode, errorMessage, email, credential });
     });
 };
 
