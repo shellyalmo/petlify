@@ -17,9 +17,11 @@ const firebaseConfig = {
   messagingSenderId: "892716607919",
   appId: "1:892716607919:web:e984ad253e71cf08fda75a",
 };
+//initialize firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
+//crud actions on firestore database
 export async function readFavorites(db) {
   const favoritesCollection = collection(db, "favorites");
   const favoritesSnapshot = await getDocs(favoritesCollection);

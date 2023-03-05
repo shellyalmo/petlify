@@ -1,5 +1,5 @@
-// import {Users, Search} from '../components';
 import catDogVideo from "../assets/catdog-video.mp4";
+import { signInWithGoogle } from "../firebase_setup/googleAuth";
 
 const Home = () => (
   <>
@@ -13,7 +13,9 @@ const Home = () => (
         <br />
         אז למה לקנות כשאפשר לאמץ?
       </p>
-      <button className=" btn btn-light">הירשמו אלינו!</button>
+      <button className=" btn btn-light" onClick={signInWithGoogle}>
+        הירשמו אלינו!
+      </button>
     </div>
   </>
 );
