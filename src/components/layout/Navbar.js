@@ -1,18 +1,14 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/black-logo.png";
 import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 
-import {
-  signInWithGoogle,
-  signOutWithGoogle,
-} from "../../firebase_setup/googleAuth";
-
-import { user } from "../../firebase_setup/googleAuth";
 import { FcGoogle } from "react-icons/fc";
 import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [loggedIn, user, signIn, signOut] = useLogin();
 
   const toggleHamburger = () => {
     setHamburgerOpen(!hamburgerOpen);
@@ -21,10 +17,13 @@ const Navbar = () => {
   return (
     <nav className="navbar bg-dark">
       <div className="container">
-        {user ? (
-          <button onClick={signOutWithGoogle}>התנתקות</button>
+        {loggedIn ? (
+          <>
+            <button onClick={signOut}>התנתקות</button>
+            <p>שלום , {user.email}</p>
+          </>
         ) : (
-          <FcGoogle onClick={signInWithGoogle} />
+          <FcGoogle onClick={signIn} />
         )}
 
         <h1 className="logo">
@@ -67,7 +66,7 @@ const Navbar = () => {
               החיות שלנו
             </NavLink>
           </li>
-          {user && (
+          {loggedIn && (
             <li
               className={
                 !hamburgerOpen ? "big-screen-menu" : "small-screen-menu"

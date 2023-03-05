@@ -6,13 +6,14 @@ import {
   deleteFavorite,
   updateFavorite,
 } from "../firebase_setup/firebase.js";
-import { user } from "../firebase_setup/googleAuth";
+import useLogin from "../hooks/useLogin";
 
 const PetCard = ({ petImg, petId, currentPage, visited }) => {
   const [favorited, setFavorited] = useState(currentPage === "favorites");
+  const [loggedIn, user] = useLogin();
 
   const handleClick = () => {
-    if (user) {
+    if (loggedIn) {
       if (favorited === false) {
         createNewFavorite(petId, petImg, user.uid, false);
       } else {
