@@ -23,7 +23,9 @@ const Navbar = () => {
             <p>שלום , {user.email}</p>
           </>
         ) : (
-          <FcGoogle onClick={signIn} />
+          <p onClick={signIn}>
+            <FcGoogle /> התחברות דרך גוגל
+          </p>
         )}
 
         <h1 className="logo">

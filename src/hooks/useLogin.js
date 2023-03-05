@@ -3,9 +3,15 @@ import {
   signInWithGoogle,
   signOutWithGoogle,
 } from "../firebase_setup/googleAuth";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase_setup/firebase";
 const useLogin = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(auth.currentUser);
+
+  onAuthStateChanged(auth, (u) => {
+    setUser(u);
+  });
 
   async function signIn() {
     const response = await signInWithGoogle();
@@ -14,7 +20,7 @@ const useLogin = () => {
   }
 
   async function signOut() {
-    const response = await signOutWithGoogle();
+    await signOutWithGoogle();
     setUser(null);
     setLoggedIn(false);
   }

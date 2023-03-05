@@ -1,11 +1,6 @@
 import catDogVideo from "../assets/catdog-video.mp4";
-import GoogleButton from "react-google-button";
-import { signInWithGoogle } from "../firebase_setup/googleAuth";
-import useLogin from "../hooks/useLogin";
 
 const Home = () => {
-  const [loggedIn] = useLogin();
-
   return (
     <>
       <video src={catDogVideo} muted loop autoPlay></video>
@@ -16,12 +11,6 @@ const Home = () => {
           <br />
           אז למה לקנות כשאפשר לאמץ?
         </p>
-        {loggedIn && (
-          <GoogleButton
-            label="התחברות לחשבון"
-            onClick={signInWithGoogle}
-          ></GoogleButton>
-        )}
       </div>
     </>
   );
