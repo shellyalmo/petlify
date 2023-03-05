@@ -1,5 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/black-logo.png";
+import { useState } from "react";
+
 import {
   signInWithGoogle,
   signOutWithGoogle,
@@ -7,8 +9,15 @@ import {
 
 import { user } from "../../firebase_setup/googleAuth";
 import { FcGoogle } from "react-icons/fc";
+import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = () => {
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+  const toggleHamburger = () => {
+    setHamburgerOpen(!hamburgerOpen);
+  };
+
   return (
     <nav className="navbar bg-dark">
       <div className="container">
@@ -25,8 +34,12 @@ const Navbar = () => {
           </Link>
         </h1>
 
-        <ul>
-          <li>
+        <ul
+          className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
+        >
+          <li
+            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
+          >
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "link active" : "link")}
@@ -34,7 +47,9 @@ const Navbar = () => {
               בית
             </NavLink>
           </li>
-          <li>
+          <li
+            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
+          >
             <NavLink
               to="/about"
               className={({ isActive }) => (isActive ? "link active" : "link")}
@@ -42,7 +57,9 @@ const Navbar = () => {
               מי אנחנו
             </NavLink>
           </li>
-          <li>
+          <li
+            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
+          >
             <NavLink
               to="/pets"
               className={({ isActive }) => (isActive ? "link active" : "link")}
@@ -51,7 +68,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           {user && (
-            <li>
+            <li
+              className={
+                !hamburgerOpen ? "big-screen-menu" : "small-screen-menu"
+              }
+            >
               <NavLink
                 to="/favorites"
                 className={({ isActive }) =>
@@ -63,6 +84,14 @@ const Navbar = () => {
             </li>
           )}
         </ul>
+        <div
+          className={`hidden-hamburger ${
+            hamburgerOpen ? "hamburger-open" : ""
+          }`}
+          onClick={toggleHamburger}
+        >
+          <HamburgerMenu hamburgerOpen={hamburgerOpen} />
+        </div>
       </div>
     </nav>
   );
