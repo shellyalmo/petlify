@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   signInWithGoogle,
   signOutWithGoogle,
@@ -9,10 +9,13 @@ const useLogin = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(auth.currentUser);
 
-  onAuthStateChanged(auth, (u) => {
-    setUser(u);
-    setLoggedIn(u !== null);
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      setUser(u);
+      setLoggedIn(u !== null);
+    });
+    return unsubscribe;
+  }, []);
 
   async function signIn() {
     const response = await signInWithGoogle();
