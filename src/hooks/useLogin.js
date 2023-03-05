@@ -11,6 +11,7 @@ const useLogin = () => {
 
   onAuthStateChanged(auth, (u) => {
     setUser(u);
+    setLoggedIn(u !== null);
   });
 
   async function signIn() {
