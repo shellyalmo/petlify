@@ -3,6 +3,7 @@ import {
   getFirestore,
   collection,
   getDocs,
+  getDoc,
   setDoc,
   doc,
   deleteDoc,
@@ -37,6 +38,17 @@ export async function readFavorites(db) {
 
   return favoritesByUser;
 }
+
+/**
+ *
+ * @param {string} pet_id
+ * @returns {boolean}
+ */
+export const isPetFavorited = async (petId, userId) => {
+  const favoriteCollection = doc(db, "favorites", petId + userId);
+  const favoriteDocument = await getDoc(favoriteCollection);
+  return favoriteDocument.exists();
+};
 
 export async function createNewFavorite(petId, petImage, userId, visited) {
   // eslint-disable-next-line no-restricted-globals

@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import heart from "../assets/filled-heart.png";
 import emptyHeart from "../assets/empty-heart.png";
 import {
   createNewFavorite,
   deleteFavorite,
   updateFavorite,
+  isPetFavorited,
 } from "../firebase_setup/firebase.js";
 import useLogin from "../hooks/useLogin";
 
 const PetCard = ({ petImg, petId, currentPage, visited }) => {
-  const [favorited, setFavorited] = useState(currentPage === "favorites");
+  const [favorited, setFavorited] = useState(false);
   const [loggedIn, user] = useLogin();
+
+  useEffect(() => {
+    const checkPetInDb = async () => {
+      const alreadyFavorited = await isPetFavorited(petId, user.uid);
+      setFavorited(alreadyFavorited);
+    };
+    if (loggedIn) {
+      checkPetInDb();
+    }
+  }, [petId, user.uid, loggedIn]);
 
   const handleClick = () => {
     if (loggedIn) {

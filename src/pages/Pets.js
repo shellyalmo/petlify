@@ -5,7 +5,7 @@ import SearchPets from "../components/SearchPets";
 import usePetSearch from "../hooks/usePetSearch";
 
 const Pets = () => {
-  const [species, setSpecies] = useState("dogs");
+  const [species, setSpecies] = useState("cats");
   const [breed, setBreed] = useState(null);
 
   const { pets, loading, error } = usePetSearch(species, breed);
