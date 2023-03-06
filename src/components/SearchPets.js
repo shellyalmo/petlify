@@ -53,6 +53,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
           </div>
           <label htmlFor="breed-select">בחרו גזע:</label>
           <select
+            style={{ fontFamily: "Roboto, Arimo, sans-serif" }}
             name="breeds"
             id="breed-select"
             onChange={(e) => {
