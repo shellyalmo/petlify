@@ -516,11 +516,11 @@ video {
 
 .big-screen-menu,
 .big-screen-menu li {
-  display: none;
+  display: block;
 }
 .small-screen-menu,
 .small-screen-menu li {
-  display: block;
+  display: none;
   background-color: blue;
   height: 100vh;
   width: 50vw;
@@ -529,7 +529,9 @@ video {
   z-index: 10;
   color: white;
 }
-
+.small-screen-menu {
+  display: block;
+}
 /* Mobile Styles */
 
 /*laptop*/
