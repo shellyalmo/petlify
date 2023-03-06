@@ -30,7 +30,12 @@ export async function readFavorites(db) {
   const favoritesCollection = collection(db, "favorites");
   const favoritesSnapshot = await getDocs(favoritesCollection);
   const favoritesList = favoritesSnapshot.docs.map((doc) => doc.data());
-  return favoritesList;
+
+  const favoritesByUser = favoritesList.filter(
+    (favorite) => favorite.user_id === auth.currentUser.uid
+  );
+
+  return favoritesByUser;
 }
 
 export async function createNewFavorite(petId, petImage, userId, visited) {
