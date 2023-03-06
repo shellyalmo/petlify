@@ -21,7 +21,7 @@ const PetCard = ({ petImg, petId, currentPage, visited }) => {
     if (loggedIn) {
       checkPetInDb();
     }
-  }, [petId, user.uid, loggedIn]);
+  }, [petId, user?.uid, loggedIn]);
 
   const handleClick = () => {
     if (loggedIn) {
