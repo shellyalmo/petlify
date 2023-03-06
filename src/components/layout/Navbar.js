@@ -24,7 +24,7 @@ const Navbar = () => {
           </>
         ) : (
           <p onClick={signIn}>
-            <FcGoogle /> התחברות דרך גוגל
+            <FcGoogle /> <span></span> התחברות דרך גוגל
           </p>
         )}
 

@@ -514,12 +514,22 @@ video {
   z-index: 6;
 }
 
-.big-screen-menu {
-  display: block;
-}
-.small-screen-menu {
+.big-screen-menu,
+.big-screen-menu li {
   display: none;
 }
+.small-screen-menu,
+.small-screen-menu li {
+  display: block;
+  background-color: blue;
+  height: 100vh;
+  width: 50vw;
+  margin-top: 50px;
+  position: fixed;
+  z-index: 10;
+  color: white;
+}
+
 /* Mobile Styles */
 
 /*laptop*/
@@ -594,10 +604,12 @@ video {
     margin-left: 10px;
     z-index: 10;
   }
-  .small-screen-menu {
+  .small-screen-menu,
+  .small-screen-menu li {
     display: block;
   }
-  .big-screen-menu {
+  .big-screen-menu,
+  .big-screen-menu li {
     display: none;
   }
 }

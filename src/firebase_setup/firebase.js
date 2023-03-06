@@ -18,6 +18,7 @@ const firebaseConfig = {
   messagingSenderId: "892716607919",
   appId: "1:892716607919:web:e984ad253e71cf08fda75a",
 };
+
 //initialize firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -34,6 +35,7 @@ export async function readFavorites(db) {
 
 export async function createNewFavorite(petId, petImage, userId, visited) {
   // eslint-disable-next-line no-restricted-globals
+  //addDoc - then no need for pet id
   await setDoc(doc(db, "favorites", petId + userId), {
     pet_id: petId,
     pet_image: petImage,
@@ -52,3 +54,7 @@ export async function updateFavorite(petId, userId, visited) {
 export async function deleteFavorite(petId, userId) {
   await deleteDoc(doc(db, "favorites", petId + userId));
 }
+
+// array of users who like dog
+// array of users who visited
+//await addDoc
