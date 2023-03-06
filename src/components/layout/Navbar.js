@@ -35,7 +35,11 @@ const Navbar = () => {
           </Link>
         </h1>
 
-        <ul className={hamburgerOpen ? "small-screen-menu" : "big-screen-menu"}>
+        <ul
+          className={
+            !hamburgerOpen ? "big-screen-menu" : "small-screen-menu show"
+          }
+        >
           <li
             className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
           >

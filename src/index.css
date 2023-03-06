@@ -529,7 +529,13 @@ video {
   z-index: 10;
   color: white;
 }
-.small-screen-menu {
+.small-screen-menu,
+.small-screen-menu li {
+  display: none;
+}
+
+.small-screen-menu.show,
+.small-screen-menu.show li {
   display: block;
 }
 /* Mobile Styles */
