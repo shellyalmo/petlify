@@ -38,9 +38,7 @@ const Navbar = () => {
         <ul
           className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
         >
-          <li
-            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-          >
+          <li>
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "link active" : "link")}
@@ -48,9 +46,7 @@ const Navbar = () => {
               בית
             </NavLink>
           </li>
-          <li
-            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-          >
+          <li>
             <NavLink
               to="/about"
               className={({ isActive }) => (isActive ? "link active" : "link")}
@@ -58,9 +54,7 @@ const Navbar = () => {
               מי אנחנו
             </NavLink>
           </li>
-          <li
-            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-          >
+          <li>
             <NavLink
               to="/pets"
               className={({ isActive }) => (isActive ? "link active" : "link")}
@@ -69,11 +63,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           {loggedIn && (
-            <li
-              className={
-                !hamburgerOpen ? "big-screen-menu" : "small-screen-menu"
-              }
-            >
+            <li>
               <NavLink
                 to="/favorites"
                 className={({ isActive }) =>
@@ -85,6 +75,7 @@ const Navbar = () => {
             </li>
           )}
         </ul>
+
         <div
           className={`hidden-hamburger ${
             hamburgerOpen ? "hamburger-open" : ""
