@@ -3,8 +3,9 @@ import logo from "../../assets/black-logo.png";
 import { useState } from "react";
 import useLogin from "../../hooks/useLogin";
 
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import HamburgerMenu from "./HamburgerMenu";
+import GoogleButton from "react-google-button";
 
 const Navbar = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
@@ -19,17 +20,20 @@ const Navbar = () => {
       <div className="container">
         {loggedIn ? (
           <>
-            <button onClick={signOut}>התנתקות</button>
-            <p>שלום , {user.email}</p>
+            <button className="btn btn-light" onClick={signOut}>
+              התנתקות
+            </button>
+            <p className="logged-in-welcome">שלום , {user.email}</p>
           </>
         ) : (
           <p onClick={signIn}>
-            <FcGoogle /> <span>התחברות דרך גוגל</span>
+            {/* <FcGoogle /> <span>התחברות דרך גוגל</span> */}
+            <GoogleButton label="התחברות דרך גוגל" />
           </p>
         )}
 
-        <h1 className="logo">
-          <Link to="/">
+        <h1>
+          <Link className="logo" to="/">
             פטליפיי
             <img src={logo} alt="petlify logo" />
           </Link>

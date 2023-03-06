@@ -616,4 +616,14 @@ video {
   .big-screen-menu ul {
     display: none;
   }
+
+  .logged-in-welcome {
+    display: none;
+  }
+}
+
+@media (max-width: 391px) {
+  .logo {
+    display: none;
+  }
 }
