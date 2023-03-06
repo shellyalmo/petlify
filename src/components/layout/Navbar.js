@@ -35,58 +35,64 @@ const Navbar = () => {
           </Link>
         </h1>
 
-        <ul
-          className={
-            !hamburgerOpen ? "big-screen-menu" : "small-screen-menu show"
-          }
+        <div
+          className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
         >
-          <li
-            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-          >
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "link active" : "link")}
-            >
-              בית
-            </NavLink>
-          </li>
-          <li
-            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-          >
-            <NavLink
-              to="/about"
-              className={({ isActive }) => (isActive ? "link active" : "link")}
-            >
-              מי אנחנו
-            </NavLink>
-          </li>
-          <li
-            className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-          >
-            <NavLink
-              to="/pets"
-              className={({ isActive }) => (isActive ? "link active" : "link")}
-            >
-              החיות שלנו
-            </NavLink>
-          </li>
-          {loggedIn && (
+          <ul>
             <li
-              className={
-                !hamburgerOpen ? "big-screen-menu" : "small-screen-menu"
-              }
+            // className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
             >
               <NavLink
-                to="/favorites"
+                to="/"
                 className={({ isActive }) =>
                   isActive ? "link active" : "link"
                 }
               >
-                המועדפים שלך
+                בית
               </NavLink>
             </li>
-          )}
-        </ul>
+            <li
+            // className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
+            >
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? "link active" : "link"
+                }
+              >
+                מי אנחנו
+              </NavLink>
+            </li>
+            <li
+            // className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
+            >
+              <NavLink
+                to="/pets"
+                className={({ isActive }) =>
+                  isActive ? "link active" : "link"
+                }
+              >
+                החיות שלנו
+              </NavLink>
+            </li>
+            {loggedIn && (
+              <li
+              // className={
+              //   !hamburgerOpen ? "big-screen-menu" : "small-screen-menu"
+              // }
+              >
+                <NavLink
+                  to="/favorites"
+                  className={({ isActive }) =>
+                    isActive ? "link active" : "link"
+                  }
+                >
+                  המועדפים שלך
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
         <div
           className={`hidden-hamburger ${
             hamburgerOpen ? "hamburger-open" : ""
