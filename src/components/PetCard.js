@@ -55,7 +55,7 @@ const PetCard = ({ petImg, petId, currentPage, visited }) => {
                 updateFavorite(petId, user.uid, e.target.checked)
               }
             />
-            <label htmlFor="visited">ביקרתי</label>
+            <label htmlFor="visited"> ביקרתי </label>
           </div>
         )}
       </div>

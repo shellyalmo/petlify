@@ -28,7 +28,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <fieldset>
-          <legend>בחרו סוג:</legend>
+          <legend> בחרו סוג: </legend>
           <div>
             <input
               type="radio"
@@ -38,7 +38,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
               checked={species === "dogs"}
               onChange={chooseSpeciesHandler}
             />
-            <label htmlFor="dogs">כלבים</label>
+            <label htmlFor="dogs"> כלבים</label>
           </div>
           <div>
             <input
@@ -49,7 +49,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
               checked={species === "cats"}
               onChange={chooseSpeciesHandler}
             />
-            <label htmlFor="cats">חתולים</label>
+            <label htmlFor="cats"> חתולים</label>
           </div>
           <label htmlFor="breed-select">בחרו גזע:</label>
           <select
