@@ -4,7 +4,7 @@ The animal shelter where you can find your favorite cat or dog breed and adopt, 
 This is a Frontend mid-project as part of Appleseeds' Fullstack Bootcamp.
 
 Petlify is a CRUD React App that consumes data from The cat API[https://thecatapi.com/] , and The Dog API[https://thedogapi.com/],
-and performs CRUS actions on the data stored in Firestore database, which updates on real-time.
+and performs CRUD actions on the data stored in Firestore database, which updates on real-time.
 ### Technologies:
 - React
 - Firebase
