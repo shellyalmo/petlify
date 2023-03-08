@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { SharedLayout } from "./components";
-import { Home, About, Pets, Favorites } from "./pages";
+import { Home, About, Favorites } from "./pages";
 
 const App = () => {
   return (
@@ -11,7 +11,6 @@ const App = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="pets" element={<Pets />} />
             <Route path="favorites" element={<Favorites />} />
           </Route>
         </Routes>

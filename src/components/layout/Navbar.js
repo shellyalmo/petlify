@@ -40,9 +40,7 @@ const Navbar = () => {
           className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
         >
           <ul>
-            <li
-            // className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-            >
+            <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -52,9 +50,7 @@ const Navbar = () => {
                 בית
               </NavLink>
             </li>
-            <li
-            // className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-            >
+            <li>
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
@@ -64,24 +60,9 @@ const Navbar = () => {
                 מי אנחנו
               </NavLink>
             </li>
-            <li
-            // className={!hamburgerOpen ? "big-screen-menu" : "small-screen-menu"}
-            >
-              <NavLink
-                to="/pets"
-                className={({ isActive }) =>
-                  isActive ? "link active" : "link"
-                }
-              >
-                החיות שלנו
-              </NavLink>
-            </li>
+
             {loggedIn && (
-              <li
-              // className={
-              //   !hamburgerOpen ? "big-screen-menu" : "small-screen-menu"
-              // }
-              >
+              <li>
                 <NavLink
                   to="/favorites"
                   className={({ isActive }) =>

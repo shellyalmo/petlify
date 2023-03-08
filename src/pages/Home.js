@@ -1,4 +1,5 @@
 import catDogVideo from "../assets/catdog-video.mp4";
+import Pets from "./Pets";
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
           אז למה לקנות כשאפשר לאמץ?
         </p>
       </div>
-      {/* Put Pets component */}
+      <Pets />
     </>
   );
 };
