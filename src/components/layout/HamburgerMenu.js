@@ -1,5 +1,5 @@
 import React from "react";
-
+// burger component (list rendering)
 const HamburgerMenu = ({ hamburgerOpen }) => {
   return (
     <>

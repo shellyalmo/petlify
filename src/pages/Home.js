@@ -12,6 +12,7 @@ const Home = () => {
           אז למה לקנות כשאפשר לאמץ?
         </p>
       </div>
+      {/* Put Pets component */}
     </>
   );
 };

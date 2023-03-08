@@ -26,10 +26,7 @@ const Navbar = () => {
             <p className="logged-in-welcome">שלום , {user.email}</p>
           </>
         ) : (
-          <p onClick={signIn}>
-            {/* <FcGoogle /> <span>התחברות דרך גוגל</span> */}
-            <GoogleButton label="התחברות דרך גוגל" />
-          </p>
+          <GoogleButton label="התחברות דרך גוגל" onClick={signIn} />
         )}
 
         <h1>

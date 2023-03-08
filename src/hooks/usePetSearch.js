@@ -7,12 +7,13 @@ const initialState = {
   error: null,
 };
 
+// constants
 const ACTIONS = {
   API_REQUESTS: "api-request",
   FETCH_DATA: "fetch-data",
   ERROR: "error",
 };
-
+// reducers
 function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.API_REQUESTS:
@@ -32,6 +33,7 @@ function usePetSearch(species, breed) {
   useEffect(() => {
     const controller = new AbortController();
     dispatch({ type: ACTIONS.API_REQUESTS });
+
     (species === "cats" ? catsApi : dogsApi)
       .get(`/images/search`, {
         params: {
@@ -43,8 +45,8 @@ function usePetSearch(species, breed) {
           size: "small",
           sub_id: "demo-87a227",
         },
-        headers:{
-           "x-api-key": "DEMO-API-KEY"
+        headers: {
+          "x-api-key": "DEMO-API-KEY",
         },
         signal: controller.signal,
       })
