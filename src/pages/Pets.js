@@ -31,7 +31,14 @@ const Pets = () => {
         )}
         {pets.map((pet) => {
           return (
-            pet && <PetCard key={pet.id} petImg={pet.url} petId={pet.id} />
+            pet && (
+              <PetCard
+                key={pet.id}
+                petImg={pet.url}
+                petId={pet.id}
+                species={species}
+              />
+            )
           );
         })}
       </div>

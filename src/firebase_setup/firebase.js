@@ -50,7 +50,13 @@ export const isPetFavorited = async (petId, userId) => {
   return favoriteDocument.exists();
 };
 
-export async function createNewFavorite(petId, petImage, userId, visited) {
+export async function createNewFavorite(
+  petId,
+  petImage,
+  userId,
+  visited,
+  species
+) {
   // eslint-disable-next-line no-restricted-globals
   //addDoc - then no need for pet id
   await setDoc(doc(db, "favorites", petId + userId), {
@@ -58,6 +64,7 @@ export async function createNewFavorite(petId, petImage, userId, visited) {
     pet_image: petImage,
     user_id: userId,
     visited: visited,
+    species: species,
   });
 }
 

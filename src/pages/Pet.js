@@ -1,22 +1,32 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { json, useParams } from "react-router-dom";
 import PetCard from "../components/PetCard";
+import usePet from "../hooks/usePet";
+import loadingGif from "../assets/loading.gif";
+
 const Pet = () => {
-  const { id } = useParams();
+  const { id, species } = useParams();
 
-  //   useEffect(() => {
-  //     getPet(id);
-
-  //   }, []);
+  const { pet, loading, error } = usePet(id, species);
 
   return (
     <div>
-      <PetCard
-        petImg={"https://cdn2.thedogapi.com/images/B1uW7l5VX_390x256.jpg"}
-        petId={id}
-        currentPage={"pet"}
-      />
+      {loading && (
+        <div>
+          <img src={loadingGif} alt="loading" />
+        </div>
+      )}
+      {error && <h3>שגיאה! משהו השתבש</h3>}
+
+      {!loading && (
+        <PetCard
+          petImg={pet?.url}
+          petId={id}
+          currentPage={"pet"}
+          species={species}
+        />
+      )}
       {id}
+      {pet?.breeds?.[0] && JSON.stringify(pet.breeds[0])}
     </div>
   );
 };

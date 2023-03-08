@@ -8,8 +8,9 @@ import {
   isPetFavorited,
 } from "../firebase_setup/firebase.js";
 import useLogin from "../hooks/useLogin";
+import { Link } from "react-router-dom";
 
-const PetCard = ({ petImg, petId, currentPage, visited }) => {
+const PetCard = ({ petImg, petId, currentPage, visited, species }) => {
   const [favorited, setFavorited] = useState(false);
   const [loggedIn, user] = useLogin();
 
@@ -26,7 +27,7 @@ const PetCard = ({ petImg, petId, currentPage, visited }) => {
   const handleClick = () => {
     if (loggedIn) {
       if (favorited === false) {
-        createNewFavorite(petId, petImg, user.uid, false);
+        createNewFavorite(petId, petImg, user.uid, false, species);
       } else {
         deleteFavorite(petId, user.uid);
       }
@@ -43,7 +44,9 @@ const PetCard = ({ petImg, petId, currentPage, visited }) => {
           alt="like button"
           onClick={handleClick}
         />
-        <img src={petImg} alt="cat" />
+        <Link to={`/${species}/${petId}`}>
+          <img src={petImg} alt="pet" title="לחצו לפרטים" />
+        </Link>
         {currentPage === "favorites" && (
           <div>
             <input
