@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
+const SearchPets = ({ species, setSpecies, setBreed, setPage }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -22,6 +22,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
   const chooseSpeciesHandler = (e) => {
     setSpecies(e.target.value);
     setBreed(null);
+    setPage(0);
   };
 
   return (
@@ -58,6 +59,7 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
             id="breed-select"
             onChange={(e) => {
               setBreed(e.target.value);
+              setPage(0);
             }}
             defaultValue=""
           >
@@ -81,4 +83,4 @@ const SearchBySpecies = ({ species, setSpecies, breed, setBreed }) => {
   );
 };
 
-export default SearchBySpecies;
+export default SearchPets;

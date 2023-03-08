@@ -16,8 +16,8 @@ const Pets = () => {
       <SearchPets
         species={species}
         setSpecies={setSpecies}
-        breed={breed}
         setBreed={setBreed}
+        setPage={setPage}
       />
       <div className="grid-4">
         {loading && (
@@ -25,8 +25,10 @@ const Pets = () => {
             <img src={loadingGif} alt="loading" />
           </div>
         )}
-        {error && <h3>Error: something went wrong </h3>}
-
+        {error && <h3>שגיאה! משהו השתבש</h3>}
+        {pets.length === 0 && loading === false && (
+          <div>הגעת לסוף תוצאות החיפוש</div>
+        )}
         {pets.map((pet) => {
           return (
             pet && <PetCard key={pet.id} petImg={pet.url} petId={pet.id} />
