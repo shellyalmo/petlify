@@ -7,8 +7,8 @@ import usePetSearch from "../hooks/usePetSearch";
 const Pets = () => {
   const [species, setSpecies] = useState("cats");
   const [breed, setBreed] = useState(null);
-
-  const { pets, loading, error } = usePetSearch(species, breed);
+  const [page, setPage] = useState(0);
+  const { pets, loading, error } = usePetSearch(species, breed, page);
 
   return (
     <>
@@ -26,13 +26,31 @@ const Pets = () => {
           </div>
         )}
         {error && <h3>Error: something went wrong </h3>}
-        {/* get rid of the index */}
+
         {pets.map((pet) => {
           return (
             pet && <PetCard key={pet.id} petImg={pet.url} petId={pet.id} />
           );
         })}
       </div>
+      <button
+        className="btn"
+        onClick={() => {
+          setPage(page - 1);
+        }}
+        disabled={page < 1}
+      >
+        הקודם
+      </button>
+      <button
+        className="btn"
+        onClick={() => {
+          setPage(page + 1);
+        }}
+        disabled={pets.length < 12}
+      >
+        הבא
+      </button>
     </>
   );
 };

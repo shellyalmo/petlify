@@ -27,7 +27,7 @@ function reducer(state, { type, payload }) {
   }
 }
 
-function usePetSearch(species, breed) {
+function usePetSearch(species, breed, page) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -38,8 +38,8 @@ function usePetSearch(species, breed) {
       .get(`/images/search`, {
         params: {
           breed_ids: breed,
-          limit: 10,
-          page: 0,
+          limit: 12,
+          page: page,
           order: "Asc",
           mime_types: "jpg,png",
           size: "small",
@@ -57,7 +57,7 @@ function usePetSearch(species, breed) {
         dispatch({ type: ACTIONS.ERROR, payload: e.error });
       });
     return () => controller.abort();
-  }, [species, breed]);
+  }, [species, breed, page]);
   return state;
 }
 
