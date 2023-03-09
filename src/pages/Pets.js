@@ -19,7 +19,7 @@ const Pets = () => {
         setBreed={setBreed}
         setPage={setPage}
       />
-      <div className="grid-4">
+      <div className={loading ? "loading" : "grid-4"}>
         {loading && (
           <div>
             <img src={loadingGif} alt="loading" />
