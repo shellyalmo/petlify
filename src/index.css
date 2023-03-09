@@ -480,7 +480,7 @@ video {
 }
 .overlay {
   position: absolute;
-  top: 20%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
@@ -556,7 +556,7 @@ video {
     width: 100vw;
   }
   .overlay {
-    top: 40%;
+    top: 70%;
   }
 }
 /* Small screens */
@@ -583,6 +583,9 @@ video {
   .container,
   .navbar .container {
     width: 100%;
+  }
+  .overlay {
+    top: 40%;
   }
 }
 
