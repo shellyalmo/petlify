@@ -1,7 +1,8 @@
-import { json, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PetCard from "../components/PetCard";
 import usePet from "../hooks/usePet";
 import loadingGif from "../assets/loading.gif";
+import { BreedInfo } from "../components/BreedInfo";
 
 const Pet = () => {
   const { id, species } = useParams();
@@ -16,7 +17,6 @@ const Pet = () => {
         </div>
       )}
       {error && <h3>שגיאה! משהו השתבש</h3>}
-
       {!loading && (
         <PetCard
           petImg={pet?.url}
@@ -25,8 +25,7 @@ const Pet = () => {
           species={species}
         />
       )}
-      {id}
-      {pet?.breeds?.[0] && JSON.stringify(pet.breeds[0])}
+      <BreedInfo pet={pet} />
     </div>
   );
 };
