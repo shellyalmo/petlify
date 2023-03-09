@@ -1,5 +1,5 @@
-import { Player } from "@lottiefiles/react-lottie-player";
 import dogsCats from "../assets/dogsCats.png";
+import AboutBullets from "../components/AboutBullets";
 
 const About = () => {
   return (
@@ -18,35 +18,7 @@ const About = () => {
           <img src={dogsCats} alt="cats and dogs" />
         </div>
         <div className="about-bullets">
-          <div className="bullet-point">
-            <Player
-              autoplay
-              loop
-              src="https://assets5.lottiefiles.com/packages/lf20_mbt8vxzs.json"
-              style={{ height: "100px", width: "100px" }}
-            ></Player>
-            <p>התחברו דרך חשבון גוגל</p>
-          </div>
-          <div className="bullet-point">
-            <Player
-              autoplay
-              loop
-              src="https://assets6.lottiefiles.com/packages/lf20_Rcmhi4qEVp.json"
-              style={{ height: "100px", width: "100px" }}
-            ></Player>
-
-            <p>השתמשו במנוע החיפוש שלנו למציאת חיית המחמד ושמרו במועדפים</p>
-          </div>
-          <div className="bullet-point">
-            <Player
-              autoplay
-              loop
-              src="https://assets5.lottiefiles.com/packages/lf20_fH59p8KAj6.json"
-              style={{ height: "100px", width: "100px" }}
-            ></Player>
-
-            <p>בואו אלינו לאמץ! רחוב הגפן 12, גבעתיים</p>
-          </div>
+          <AboutBullets />
         </div>
       </div>
     </>
